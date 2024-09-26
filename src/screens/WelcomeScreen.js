@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import Colors from '../constants/colors';
 
 const WelcomeScreen = () => {
   return (
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: Colors.welcomeScreenBg,
     padding: 10,
     borderRadius: 5,
     marginBottom: 10,
