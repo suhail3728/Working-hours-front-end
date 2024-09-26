@@ -7,6 +7,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import CrudOperationsScreen from './src/screens/CrudOperationsScreen';
+import WelcomeScreen from './src/screens/WelcomeScreen';
 
 type RootStackParamList = {
   Home: undefined;
@@ -42,7 +43,7 @@ function App(): React.JSX.Element {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={WelcomeScreen} />
         <Stack.Screen name="CrudOperations" component={CrudOperationsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
