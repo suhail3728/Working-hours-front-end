@@ -3,22 +3,17 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button, StyleSheet, useColorScheme, View } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
+
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import CrudOperationsScreen from './src/screens/CrudOperationsScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
+import NewUserScreen from './src/screens/NewUserScreen';
+import { AppScreens, HomeScreenProps } from './src/types/types';
 
-type RootStackParamList = {
-  Home: undefined;
-  CrudOperations: undefined;
-};
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
-type HomeScreenProps = {
-  navigation: HomeScreenNavigationProp;
-};
+
 
 function HomeScreen({ navigation }: HomeScreenProps) {
   return (
@@ -31,7 +26,7 @@ function HomeScreen({ navigation }: HomeScreenProps) {
   );
 }
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<AppScreens>();
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -43,8 +38,9 @@ function App(): React.JSX.Element {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={WelcomeScreen} />
+        <Stack.Screen name="Home" component={WelcomeScreen} options={{headerShown:false}}/>
         <Stack.Screen name="CrudOperations" component={CrudOperationsScreen} />
+        <Stack.Screen name="NewUser" component={NewUserScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
