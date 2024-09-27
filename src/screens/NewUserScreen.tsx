@@ -1,18 +1,22 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { NewUserProps } from '../types/types';
-
+import { IconButton } from 'react-native-paper';
 function NewUserScreen  ({ navigation }:NewUserProps) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.closeButton}
-        onPress={() => navigation.goBack()}
-      >
-        <Text style={styles.closeButtonText}>X</Text>
-      </TouchableOpacity>
+      
+     
+      <IconButton 
+        icon="close" 
+        size={24} 
+        style={styles.closeButton} 
+        onPress={() => navigation.goBack()} 
+      />
+     
       <Text style={styles.title}>New User Screen</Text>
     </View>
+
   );
 }
 

@@ -40,7 +40,7 @@ function App(): React.JSX.Element {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={WelcomeScreen} options={{headerShown:false}}/>
         <Stack.Screen name="CrudOperations" component={CrudOperationsScreen} />
-        <Stack.Screen name="NewUser" component={NewUserScreen} />
+        <Stack.Screen name="NewUser" component={NewUserScreen} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
