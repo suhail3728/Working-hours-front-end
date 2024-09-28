@@ -19,9 +19,9 @@ function UserCreation1({navigation}:UserCreation1Props) {
   };
 
   const handleNextPress = () => {
-    console.log('Moving to next screen with position:', selectedPosition);
+    navigation.navigate('UserCreation2');
   };
-
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>What is your position in the team?</Text>

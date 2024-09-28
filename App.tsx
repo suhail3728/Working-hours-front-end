@@ -10,9 +10,9 @@ import CrudOperationsScreen from './src/screens/CrudOperationsScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import NewUserScreen from './src/screens/NewUserScreen';
 import UserCreation1 from './src/screens/UserCreation1';
-import { AppScreens, HomeScreenProps } from './src/types/types';
-import { Title } from 'react-native-paper';
+import UserCreation2 from './src/screens/UserCreation2';
 
+import { AppScreens, HomeScreenProps } from './src/types/types';
 
 
 
@@ -44,6 +44,8 @@ function App(): React.JSX.Element {
         <Stack.Screen name="CrudOperations" component={CrudOperationsScreen} />
         <Stack.Screen name="NewUser" component={NewUserScreen} options ={{headerShown:false}} />
         <Stack.Screen name="UserCreation1" component ={UserCreation1} options={{ title: 'Step 1 of 5'}}  />
+        <Stack.Screen name="UserCreation2" component ={UserCreation2} options={{ title: 'Step  2 of 5'}}  />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
