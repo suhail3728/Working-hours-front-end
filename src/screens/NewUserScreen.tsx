@@ -22,9 +22,7 @@ function NewUserScreen({navigation}: NewUserProps) {
       />
       <CustomButton
         backgroundColor={Colors.orange}
-        onPress={() => {
-          console.log('create a new team');
-        }}
+        onPress={()=> navigation.navigate('UserCreation1')}
         textColor={Colors.white}
         borderColor={Colors.orange}
         title={'Create a new team'}></CustomButton>

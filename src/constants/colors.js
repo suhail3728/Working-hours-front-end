@@ -1,3 +1,5 @@
+import { black } from "react-native-paper/lib/typescript/styles/themes/v2/colors";
+
 const Colors = {
     welcomeScreenBg: '#F1F0EC', 
     green:'#3ABEA9', 
@@ -6,6 +8,7 @@ const Colors = {
     orange: '#FE6809',
     white: '#FEFEFE',
     darkGray:'#4F4F4F',
+    black:'black'
   };
   
   export default Colors;

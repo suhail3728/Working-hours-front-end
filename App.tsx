@@ -9,7 +9,9 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import CrudOperationsScreen from './src/screens/CrudOperationsScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import NewUserScreen from './src/screens/NewUserScreen';
+import UserCreation1 from './src/screens/UserCreation1';
 import { AppScreens, HomeScreenProps } from './src/types/types';
+import { Title } from 'react-native-paper';
 
 
 
@@ -40,7 +42,8 @@ function App(): React.JSX.Element {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={WelcomeScreen} options={{headerShown:false}}/>
         <Stack.Screen name="CrudOperations" component={CrudOperationsScreen} />
-        <Stack.Screen name="NewUser" component={NewUserScreen} options={{headerShown:false}} />
+        <Stack.Screen name="NewUser" component={NewUserScreen} options ={{headerShown:false}} />
+        <Stack.Screen name="UserCreation1" component ={UserCreation1} options={{ title: 'Step 1 of 5'}}  />
       </Stack.Navigator>
     </NavigationContainer>
   );

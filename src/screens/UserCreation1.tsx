@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { UserCreation1Props } from '../types/types';
 
-const positions = [
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Colors from '../constants/colors';
+type PositionType = 'Team Leader' | 'Developer' | 'Designer' | 'Project Manager';
+const positions: PositionType[] = [
   'Team Leader',
   'Developer',
   'Designer',
   'Project Manager'
 ];
 
-const PositionSelectionScreen = () => {
-  const [selectedPosition, setSelectedPosition] = useState(null);
+function UserCreation1({navigation}:UserCreation1Props) {
+  const [selectedPosition, setSelectedPosition] = useState<PositionType | null>(null);
 
-  const handlePositionSelect = (position) => {
+  const handlePositionSelect = (position: PositionType) => {
     setSelectedPosition(position);
   };
 
   const handleNextPress = () => {
-    // Here you would typically navigate to the next screen
     console.log('Moving to next screen with position:', selectedPosition);
   };
 
@@ -37,14 +39,20 @@ const PositionSelectionScreen = () => {
           </TouchableOpacity>
         ))}
       </View>
-      {selectedPosition && (
-        <TouchableOpacity
-          style={styles.nextButton}
-          onPress={handleNextPress}
-        >
-          <Text style={styles.nextButtonText}>Next</Text>
-        </TouchableOpacity>
-      )}
+      
+      <TouchableOpacity
+        style={[
+          styles.nextButton,
+          !selectedPosition && styles.nextButtonDisabled
+        ]}
+        onPress={handleNextPress}
+        disabled={!selectedPosition}
+      >
+        <Text style={[
+          styles.nextButtonText,
+          !selectedPosition && styles.nextButtonTextDisabled
+        ]}>Next</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -52,16 +60,18 @@ const PositionSelectionScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: Colors.white,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    marginTop:20,
     marginBottom: 20,
     textAlign: 'center',
+    color: Colors.black,
   },
   buttonGrid: {
     flexDirection: 'row',
@@ -75,36 +85,47 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     margin: '2.5%',
-    borderRadius: 10,
+    borderRadius: 5,
     backgroundColor: 'white',
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: Colors.border,
   },
   selectedButton: {
-    borderColor: '#8A2BE2',
+    borderColor: '#5A67D8', // More blue-violet
     borderWidth: 2,
-    shadowColor: '#FF69B4',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
+    shadowColor: '#4A90E2', // Soft blue
+    shadowOffset: { width: 100, height: 100 },
+    shadowOpacity: 0.7,
+    shadowRadius: 50,
     elevation: 5,
   },
   buttonText: {
     fontSize: 16,
     textAlign: 'center',
+    color:Colors.black,
   },
   nextButton: {
     marginTop: 20,
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    backgroundColor: '#8A2BE2',
-    borderRadius: 25,
+    height: 60,
+    width: 300,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor: Colors.orange,
+    borderRadius: 7,
+  },
+  nextButtonDisabled: {
+    backgroundColor: 'rgba(254, 104, 9, 0.5)',
   },
   nextButtonText: {
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
   },
+  nextButtonTextDisabled: {
+    color: 'rgba(255, 255, 255, 0.7)', 
+  },
 });
 
-export default PositionSelectionScreen;
+
+
+export default UserCreation1;
