@@ -11,7 +11,7 @@ function UserCreation2({ navigation }: UserCreation2Props) {
   const isNextButtonEnabled = name.trim() !== '' && business.trim() !== '';
 
   const handleNextPress = () => {
-    console.log('Moving to next screen with position:');
+   navigation.navigate('UserCreation3');
   };
 
   return (

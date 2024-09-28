@@ -7,6 +7,7 @@ export type AppScreens = {
     Home: undefined;
     UserCreation1:undefined;
     UserCreation2:undefined;
+    UserCreation3:undefined;
 
   CrudOperations: undefined;
   };
@@ -16,8 +17,9 @@ export type WelcomeScreenNavigationProp = StackNavigationProp<AppScreens, 'Welco
 export type HomeScreenNavigationProp = StackNavigationProp<AppScreens, 'Home'>;
 export type NewUserNavigationProp = StackNavigationProp<AppScreens, 'NewUser'>;
 export type UserCreation1Prop = StackNavigationProp<AppScreens, 'UserCreation1'>;
-
 export type UserCreation2Prop = StackNavigationProp<AppScreens, 'UserCreation2'>;
+
+export type UserCreation3Prop = StackNavigationProp<AppScreens, 'UserCreation3'>;
 
 export type HomeScreenProps = {
     navigation: HomeScreenNavigationProp;
@@ -36,4 +38,7 @@ export type WelcomeScreenProps = {
   };
   export type UserCreation2Props = {
     navigation: UserCreation2Prop;
+  };
+  export type UserCreation3Props = {
+    navigation: UserCreation3Prop;
   };
