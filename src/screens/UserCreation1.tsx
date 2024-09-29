@@ -91,9 +91,9 @@ const styles = StyleSheet.create({
     borderColor: Colors.border,
   },
   selectedButton: {
-    borderColor: '#5A67D8', // More blue-violet
+    borderColor: '#5A67D8', 
     borderWidth: 2,
-    shadowColor: '#4A90E2', // Soft blue
+    shadowColor: '#4A90E2',
     shadowOffset: { width: 100, height: 100 },
     shadowOpacity: 0.7,
     shadowRadius: 50,

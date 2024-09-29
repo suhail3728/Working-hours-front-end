@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { UserCreation3Props } from '../types/types';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import Colors from '../constants/colors';
+import { Picker } from '@react-native-picker/picker';
 
 const numOfEmplys: string[] = [
   '<20',
@@ -10,20 +11,27 @@ const numOfEmplys: string[] = [
   '80+'
 ];
 
+const businessTypes = [
+  { label: 'Select Business Type', value: null },
+  { label: 'Restuarant', value: 'Restaurant' },
+  { label: 'Hospital', value: 'Hospital' },
+  { label: 'School', value: 'School' },
+  { label: 'Other', value: 'Other' }
+];
 
 function UserCreation3({ navigation }: UserCreation3Props) {
   const [adress, setAdress] = useState('');
-  const [businessType, setBusinessType] = useState('');
+  const [businessType, setBusinessType] = useState(null);
   const [selectedNumOfEmployees, setSelectedNumOfEmployees] = useState(''); 
 
   const isNextButtonEnabled = 
     adress.trim() !== '' && 
-    businessType.trim() !== '' && 
+    businessType !== null && 
     selectedNumOfEmployees.trim() !== '';
 
   const handleNextPress = () => {
     console.log('Moving to next screen with position:', selectedNumOfEmployees);
-    navigation.navigate();
+    navigation.navigate('NextScreen'); // Replace 'NextScreen' with your actual screen name
   };
 
   return (
@@ -43,14 +51,21 @@ function UserCreation3({ navigation }: UserCreation3Props) {
       </View>
 
       <View style={styles.inputRow}>
-        <Text style={styles.label}>Business Type</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Type of business"
-            value={businessType}
-            onChangeText={setBusinessType}
-          />
+        <View style={styles.businessContainer}>
+          <Text style={styles.businessLabel}>Business Type</Text>
+       
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={businessType}
+              onValueChange={(itemValue) => setBusinessType(itemValue)}
+              style={styles.picker}
+              itemStyle={styles.pickerItem}
+            >
+              {businessTypes.map((type, index) => (
+                <Picker.Item key={index} label={type.label} value={type.value} />
+              ))}
+            </Picker>
+          </View>
         </View>
       </View>
 
@@ -61,18 +76,10 @@ function UserCreation3({ navigation }: UserCreation3Props) {
         {numOfEmplys.map((num, index) => (
           <TouchableOpacity
             key={index}
-            style={[
-              styles.numButton, 
-              selectedNumOfEmployees === num && styles.numButtonSelected
-            ]}
+            style={[styles.numButton, selectedNumOfEmployees === num && styles.numButtonSelected]}
             onPress={() => setSelectedNumOfEmployees(num)}
           >
-            <Text 
-              style={[
-                styles.numButtonText, 
-                selectedNumOfEmployees === num && styles.numButtonTextSelected
-              ]}
-            >
+            <Text style={[styles.numButtonText, selectedNumOfEmployees === num && styles.numButtonTextSelected]}>
               {num}
             </Text>
           </TouchableOpacity>
@@ -132,6 +139,33 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333',
   },
+  businessContainer:{
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  businessLabel:{
+    flex:1,
+    marginRight: 10,
+    fontSize: 16,
+    color: Colors.black,
+  },
+  pickerContainer: {
+    flexDirection: 'row',
+    flex: 1.3, 
+    alignItems: 'center',
+    justifyContent: 'flex-end', 
+    backgroundColor: Colors.white,
+    paddingHorizontal: 10,
+  },
+  pickerItem: {
+    fontSize: 16,
+    paddingVertical: 10, 
+  },
+  picker: {
+    flex: 1,
+  },
   buttonGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -142,7 +176,6 @@ const styles = StyleSheet.create({
   numButton: {
     borderWidth: 1,
     borderColor: Colors.border,
-
     paddingVertical: 10,
     paddingHorizontal: 25,
     borderRadius: 25, 
@@ -164,6 +197,11 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'flex-end',
     marginBottom: 50,
+  },
+  selectedValueText: {
+    fontSize: 16,
+    color: '#333',
+    marginRight: 10, 
   },
   nextButton: {
     marginTop: 20,
