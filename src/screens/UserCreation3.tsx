@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { UserCreation3Props } from '../types/types';
-import { createUser } from '../services/api';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import Colors from '../constants/colors';
 import { Picker } from '@react-native-picker/picker';
@@ -29,39 +28,39 @@ function UserCreation3({ route, navigation }: UserCreation3Props) {
   const isNextButtonEnabled = 
     adress.trim() !== '' && 
     businessType !== null && 
-    selectedNumOfEmployees.trim() !== '';
+    selectedNumOfEmployees.trim() !== ''; 
 
     const handleNextPress = () => {
       if (isNextButtonEnabled) {
-        handleCreateUser();
+        navigation.navigate('UserCreation4',{name, business, mobileNumber,selectedPosition,adress,businessType, selectedNumOfEmployees});
       } else {
         console.log('Please fill in all required fields');
         
       }
     };
 
-  const handleCreateUser = async () => {
-    try {
-      const userData = {
-        name,
-        business,
-        mobileNumber,
-        position: selectedPosition,
-        adress,
-        businessType,
-        numberOfEmployees: selectedNumOfEmployees
-      };
+  // const handleCreateUser = async () => {
+  //   try {
+  //     const userData = {
+  //       name,
+  //       business,
+  //       mobileNumber,
+  //       position: selectedPosition,
+  //       adress,
+  //       businessType,
+  //       numberOfEmployees: selectedNumOfEmployees
+  //     };
 
-      const response = await createUser(userData);
-      console.log('User created successfully:', response);
+  //     const response = await createUser(userData);
+  //     console.log('User created successfully:', response);
       
     
-      navigation.navigate('WelcomeMessage');
-    } catch (error) {
-      console.error('Error creating user:', error);
+  //     navigation.navigate('WelcomeMessage');
+  //   } catch (error) {
+  //     console.error('Error creating user:', error);
    
-    }
-  };
+  //   }
+  // };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tell us a bit about your business</Text>

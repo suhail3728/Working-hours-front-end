@@ -10,6 +10,7 @@ export type AppScreens = {
     UserCreation1:undefined;
     UserCreation2:{ selectedPosition: PositionType | null };
     UserCreation3:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null};
+    UserCreation4:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null, adress:string, businessType:string,selectedNumOfEmployees:string}  
     WelcomeMessage:undefined;
 
   CrudOperations: undefined;
@@ -18,6 +19,8 @@ export  type PositionType = 'Manager' | 'Owner/Operator' | 'Employee' | 'Other';
 
 export type UserCreation2RouteProp = RouteProp<AppScreens, 'UserCreation2'>;
 export type UserCreation3RouteProp = RouteProp<AppScreens, 'UserCreation3'>;
+export type UserCreation4RouteProp = RouteProp<AppScreens, 'UserCreation4'>;
+
 
 
 export type WelcomeScreenNavigationProp = StackNavigationProp<AppScreens, 'Welcome'>;
@@ -25,10 +28,13 @@ export type HomeScreenNavigationProp = StackNavigationProp<AppScreens, 'Home'>;
 export type NewUserNavigationProp = StackNavigationProp<AppScreens, 'NewUser'>;
 export type UserCreation1Prop = StackNavigationProp<AppScreens, 'UserCreation1'>;
 export type UserCreation2Prop = StackNavigationProp<AppScreens, 'UserCreation2'>;
+
 export type WelcomeMessageProp = StackNavigationProp<AppScreens, 'WelcomeMessage'>;
 
 
 export type UserCreation3Prop = StackNavigationProp<AppScreens, 'UserCreation3'>;
+export type UserCreation4Prop = StackNavigationProp<AppScreens, 'UserCreation4'>;
+
 
 export type HomeScreenProps = {
     navigation: HomeScreenNavigationProp;
@@ -52,6 +58,10 @@ export type WelcomeScreenProps = {
   export type UserCreation3Props = {
     navigation: UserCreation3Prop;
     route: UserCreation3RouteProp;
+  };
+  export type UserCreation4Props = {
+    navigation: UserCreation4Prop;
+    route: UserCreation4RouteProp;
   };
   export type WelcomeMessageProps = {
     navigation: WelcomeMessageProp;

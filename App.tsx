@@ -12,6 +12,7 @@ import NewUserScreen from './src/screens/NewUserScreen';
 import UserCreation1 from './src/screens/UserCreation1';
 import UserCreation2 from './src/screens/UserCreation2';
 import UserCreation3 from './src/screens/UserCreation3';
+import UserCreation4 from './src/screens/UserCreation4';
 
 import { AppScreens, HomeScreenProps } from './src/types/types';
 import WelcomeScreen from './src/screens/WelcomeScreen';
@@ -45,10 +46,13 @@ function App(): React.JSX.Element {
         <Stack.Screen name="Home" component={WelcomeScreen} options={{headerShown:false}}/>
         <Stack.Screen name="CrudOperations" component={CrudOperationsScreen} />
         <Stack.Screen name="NewUser" component={NewUserScreen} options ={{headerShown:false}} />
-        <Stack.Screen name="UserCreation1" component ={UserCreation1} options={{ title: 'Step 1 of 3'}}  />
-        <Stack.Screen name="UserCreation2" component ={UserCreation2} options={{ title: 'Step  2 of 3'}}  />
-        <Stack.Screen name="UserCreation3" component ={UserCreation3} options={{ title: 'Step  3 of 3'}}/>
+        <Stack.Screen name="UserCreation1" component ={UserCreation1} options={{ title: 'Step 1 of 4'}}  />
+        <Stack.Screen name="UserCreation2" component ={UserCreation2} options={{ title: 'Step  2 of 4'}}  />
+        <Stack.Screen name="UserCreation3" component ={UserCreation3} options={{ title: 'Step  3 of 4'}}/>
+        <Stack.Screen name="UserCreation4" component ={UserCreation4} options={{ title: 'Step  4 of 4'}}/>
+
         <Stack.Screen name="WelcomeMessage" component = {WelcomeMessage} options= {{headerShown:false}}/>
+
 
       </Stack.Navigator>
     </NavigationContainer>
