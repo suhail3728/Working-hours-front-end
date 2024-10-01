@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { UserCreation3Props } from '../types/types';
+import { createUser } from '../services/api';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import Colors from '../constants/colors';
 import { Picker } from '@react-native-picker/picker';
@@ -19,7 +20,8 @@ const businessTypes = [
   { label: 'Other', value: 'Other' }
 ];
 
-function UserCreation3({ navigation }: UserCreation3Props) {
+function UserCreation3({ route, navigation }: UserCreation3Props) {
+  const { name, business, mobileNumber, selectedPosition } = route.params;
   const [adress, setAdress] = useState('');
   const [businessType, setBusinessType] = useState(null);
   const [selectedNumOfEmployees, setSelectedNumOfEmployees] = useState(''); 
@@ -29,11 +31,37 @@ function UserCreation3({ navigation }: UserCreation3Props) {
     businessType !== null && 
     selectedNumOfEmployees.trim() !== '';
 
-  const handleNextPress = () => {
-    console.log('Moving to next screen with position:', selectedNumOfEmployees);
-    navigation.navigate('WelcomeMessage'); 
-  };
+    const handleNextPress = () => {
+      if (isNextButtonEnabled) {
+        handleCreateUser();
+      } else {
+        console.log('Please fill in all required fields');
+        
+      }
+    };
 
+  const handleCreateUser = async () => {
+    try {
+      const userData = {
+        name,
+        business,
+        mobileNumber,
+        position: selectedPosition,
+        adress,
+        businessType,
+        numberOfEmployees: selectedNumOfEmployees
+      };
+
+      const response = await createUser(userData);
+      console.log('User created successfully:', response);
+      
+    
+      navigation.navigate('WelcomeMessage');
+    } catch (error) {
+      console.error('Error creating user:', error);
+   
+    }
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tell us a bit about your business</Text>
