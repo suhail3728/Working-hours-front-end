@@ -3,7 +3,8 @@ import { UserCreation2Props } from '../types/types';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
 import Colors from '../constants/colors';
 
-function UserCreation2({ navigation }: UserCreation2Props) {
+function UserCreation2({route, navigation }: UserCreation2Props) {
+  const {selectedPosition} = route.params;
   const [name, setName] = useState('');
   const [business, setBusiness] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
@@ -11,7 +12,7 @@ function UserCreation2({ navigation }: UserCreation2Props) {
   const isNextButtonEnabled = name.trim() !== '' && business.trim() !== '';
 
   const handleNextPress = () => {
-   navigation.navigate('UserCreation3');
+   navigation.navigate('UserCreation3',{name, business, mobileNumber,selectedPosition});
   };
 
   return (

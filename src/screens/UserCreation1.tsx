@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { UserCreation1Props } from '../types/types';
+import { UserCreation1Props,PositionType } from '../types/types';
 
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Colors from '../constants/colors';
-type PositionType = 'Team Leader' | 'Developer' | 'Designer' | 'Project Manager';
 const positions: PositionType[] = [
-  'Team Leader',
-  'Developer',
-  'Designer',
-  'Project Manager'
+  'Owner/Operator',
+  'Manager',
+  'Employee',
+  'Other'
 ];
 
 function UserCreation1({navigation}:UserCreation1Props) {
@@ -19,7 +18,7 @@ function UserCreation1({navigation}:UserCreation1Props) {
   };
 
   const handleNextPress = () => {
-    navigation.navigate('UserCreation2');
+    navigation.navigate('UserCreation2', {selectedPosition});
   };
   
   return (
@@ -60,7 +59,6 @@ function UserCreation1({navigation}:UserCreation1Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
     alignItems: 'center',
     padding: 20,
     backgroundColor: Colors.white,
@@ -125,7 +123,4 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.7)', 
   },
 });
-
-
-
 export default UserCreation1;

@@ -29,6 +29,17 @@ import axios from 'axios';
       throw error;
     }
   };
+
+  export const createUser = async (user) => {
+
+    try {
+    const response = await apiService.post('/api/user',user);
+    return response.data;
+ } catch (error) {
+  console.error('Error creating user:',error);
+  throw error;
+ }
+  };
   
   export const getItems = async () => {
     try {

@@ -31,7 +31,7 @@ function UserCreation3({ navigation }: UserCreation3Props) {
 
   const handleNextPress = () => {
     console.log('Moving to next screen with position:', selectedNumOfEmployees);
-    navigation.navigate('NextScreen'); // Replace 'NextScreen' with your actual screen name
+    navigation.navigate('WelcomeMessage'); 
   };
 
   return (
