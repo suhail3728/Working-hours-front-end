@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://10.13.49.157:5000/'; // Use this for Android emulator
+const API_URL = 'http://10.132.64.186:5000/'; // Use this for Android emulator
 // const API_URL = 'http://localhost:5000';  // Use this for iOS simulator
 
 const apiService = axios.create({
