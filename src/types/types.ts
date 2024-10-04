@@ -11,7 +11,7 @@ export type AppScreens = {
     UserCreation2:{ selectedPosition: PositionType | null };
     UserCreation3:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null};
     UserCreation4:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null, adress:string, businessType:string,selectedNumOfEmployees:string}  
-    WelcomeMessage:undefined;
+    WelcomeMessage:{userId: string};
 
   CrudOperations: undefined;
   };
@@ -20,6 +20,7 @@ export  type PositionType = 'Manager' | 'Owner/Operator' | 'Employee' | 'Other';
 export type UserCreation2RouteProp = RouteProp<AppScreens, 'UserCreation2'>;
 export type UserCreation3RouteProp = RouteProp<AppScreens, 'UserCreation3'>;
 export type UserCreation4RouteProp = RouteProp<AppScreens, 'UserCreation4'>;
+export type WelcomeMessageRouteProp = RouteProp<AppScreens, 'WelcomeMessage'>;
 
 
 
@@ -64,5 +65,6 @@ export type WelcomeScreenProps = {
     route: UserCreation4RouteProp;
   };
   export type WelcomeMessageProps = {
+    route: WelcomeMessageRouteProp;
     navigation: WelcomeMessageProp;
   };

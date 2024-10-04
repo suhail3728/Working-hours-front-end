@@ -29,7 +29,7 @@ const UserCreation4 = ({navigation,route}:UserCreation4Props) => {
       console.log('User created successfully:', response);
       
     
-      navigation.navigate('WelcomeMessage');
+      navigation.navigate('WelcomeMessage',{userId: response.id});
     } catch (error) {
       console.error('Error creating user:', error);
    

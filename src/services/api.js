@@ -81,6 +81,17 @@ export const deleteItem = async id => {
   }
 };
 
-// Add more API functions here as needed
+// User data fetching for the welcome page 
+
+export const getUserData = async (userId) => {
+  try {
+    const response = await apiService.get(`/api/users/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    throw error;
+  }
+};
+
 
 export default apiService;
