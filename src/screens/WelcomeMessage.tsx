@@ -2,6 +2,8 @@ import React, {useEffect,useState} from "react";
 import { View,Text } from "react-native";
 import { WelcomeMessageProps } from '../types/types';
 import { getUserData } from "../services/api";
+import CustomTitle from "../components/CustomTitle";
+import Colors from "../constants/colors";
 
 
 const WelcomeMessage = ({route,navigation}:WelcomeMessageProps) => {
@@ -23,7 +25,10 @@ const WelcomeMessage = ({route,navigation}:WelcomeMessageProps) => {
 return(
 
     <View>
-        <Text>Hey {userName}</Text>
+       <CustomTitle
+       textColor={Colors.black}
+       title={`Welcome to Hourss,\n${userName}!`}></CustomTitle>
+<Text></Text>
     </View>
 
 );
