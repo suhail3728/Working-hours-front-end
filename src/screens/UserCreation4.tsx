@@ -47,7 +47,9 @@ const UserCreation4 = ({navigation,route}:UserCreation4Props) => {
                 style={styles.input}
                 placeholder="Email Address"
                 value={email}
+                keyboardType="email-address"
                 onChangeText={setEmail}
+                 autoCapitalize="none"
               />
             </View>
           </View>
@@ -60,6 +62,8 @@ const UserCreation4 = ({navigation,route}:UserCreation4Props) => {
                 placeholder="Create Password"
                 value={password}
                 onChangeText={setPassword}
+                  secureTextEntry={true}  
+        autoCapitalize="none"
               />
             </View>
           </View>
